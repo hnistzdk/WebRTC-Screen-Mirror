@@ -14,6 +14,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				{children}
 				<ScrollRestoration />
 				<Scripts />
+				<script
+					defer
+					data-site-id="mirror.doveliao.com"
+					src="https://assets.onedollarstats.com/tracker.js"
+				></script>
 			</body>
 		</html>
 	);
