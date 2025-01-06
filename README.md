@@ -1,100 +1,31 @@
-# Welcome to React Router!
+# WebRTC Screen Mirror
 
-A modern, production-ready template for building full-stack React applications using React Router.
+一个基于 WebRTC 和 Cloudflare Durable Objects 实现的简单高效的屏幕共享工具。通过 WebSocket 实现实时信令服务，配合 WebRTC 技术，实现低延迟的屏幕共享功能。只需输入投屏码，即可实现跨设备的屏幕分享。
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## 🌟 特性
 
-## Features
+- 🚀 基于 WebRTC 的低延迟屏幕共享
+- 🔌 使用 WebSocket 实现实时信令通信
+- 🔒 基于 Cloudflare Durable Objects 实现可靠的 WebSocket 信令服务器
+- 📱 支持跨平台、跨设备访问
+- 🎯 简单易用，无需安装，输入投屏码即可观看
+- 🆓 完全免费开源
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## 🖥️ 在线体验
 
-## Getting Started
+访问 [https://mirror.doveliao.com/](https://mirror.doveliao.com/) 即可体验。
 
-### Installation
+## 🛠️ 技术栈
 
-Install the dependencies:
+- WebRTC - 实现端对端的屏幕共享
+- WebSocket - 实现实时信令通信
+- Cloudflare Workers - 提供边缘计算能力
+- Cloudflare Durable Objects - 维护 WebSocket 连接状态
+- TypeScript - 提供类型安全的代码实现
 
-```bash
-npm install
-```
+## 💡 工作原理
 
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-This template includes three Dockerfiles optimized for different package managers:
-
-- `Dockerfile` - for npm
-- `Dockerfile.pnpm` - for pnpm
-- `Dockerfile.bun` - for bun
-
-To build and run using Docker:
-
-```bash
-# For npm
-docker build -t my-app .
-
-# For pnpm
-docker build -f Dockerfile.pnpm -t my-app .
-
-# For bun
-docker build -f Dockerfile.bun -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+1. 共享方打开网页并选择"共享屏幕"，系统生成唯一的投屏码
+2. 观看方输入投屏码后，通过 WebSocket 连接到对应的 Durable Object
+3. Durable Object 作为信令服务器，帮助双方建立 WebRTC 连接
+4. 建立 P2P 连接后，屏幕画面通过 WebRTC 直接传输，实现低延迟共享
